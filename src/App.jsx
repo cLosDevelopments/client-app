@@ -8,6 +8,12 @@ function App() {
       <header className="App-header">
         <h1>Client Schedualer</h1>
       </header>
+      <main>
+        <FormTask />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
