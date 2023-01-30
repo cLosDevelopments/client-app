@@ -6,7 +6,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Client Schedualer</h1>
+        <h1>Client Scheduler</h1>
+        <p className="getstartedintro">Please Enter Your Busniess Name Below To Get Started.</p>
       </header>
       <main>
         <FormTask />
