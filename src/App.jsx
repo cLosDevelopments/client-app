@@ -1,19 +1,18 @@
 import './App.css';
-import FormTask from './Components/FormTask/FormTask';
-import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import TaskForm from './Components/TaskFrom/TaskForm';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Client Scheduler</h1>
-        <p className="getstartedintro">Please Enter Your Busniess Name Below To Get Started.</p>
+        <h1 class="App-Header-h1">Client Scheduler</h1>
+        <Header />
       </header>
       <main>
-        <FormTask />
+        <TaskForm />
       </main>
       <footer>
-        <Footer />
       </footer>
     </div>
   );
