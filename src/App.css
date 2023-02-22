@@ -1,10 +1,13 @@
-html, body, #root, .App {
+html,
+body,
+#root,
+.App {
   height: 100%;
 }
 
 .App {
   text-align: center;
-  background: linear-gradient(to bottom,rgb(212, 196, 179), rgb(231, 222, 212), rgb(255, 255, 255));
+  background: linear-gradient(to bottom, rgb(212, 196, 179), rgb(231, 222, 212), rgb(255, 255, 255));
 }
 
 .App-logo {
@@ -22,20 +25,67 @@ html, body, #root, .App {
 
 .App-Header-h1 {
   font-size: calc(1.375rem + 7vw);
-} 
+  font-family: serif;
+}
 
 .App-link {
   color: #61dafb;
 }
 
 .Input-Section {
-  margin-top: 2%;
+  margin-top: 1%;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  text-align: -webkit-center;
+}
+
+.form-control {
+  width: 50%;
+  text-align: center;
+  box-shadow: 6px 6px rgb(212, 196, 179);
 }
 
 .Intro {
   font-size: calc(1.375rem + .5vw);
 }
 
+.col-sm-10 {
+  width: 17%;
+  margin-top: 27px;
+}
+
 .Client-Info {
   font-size: calc(1.1rem + 2vw);
+}
+
+.btn {
+  padding: 6px 15px;
+  margin-top: 20px;
+  font-size: 29px;
+  background-color: rgb(209, 193, 176);
+  color: white;
+  border: none;
+  box-shadow: 6px 4px #d1cfcd;
+}
+
+textarea.form-control {
+  min-height: calc(6.5em + .75rem + 2px);
+}
+
+.Task-List-Header {
+  padding: 15px;
+  background-color: rgb(212, 196, 179);
+  border-radius: 8px 8px 0px 0px;
+  border-bottom: 1px solid black;
+}
+
+.Task-List {
+  margin: 40px;
+  background-color: lightgrey;
+  border-radius: 8px 8px 8px 8px;;
+}
+
+.Deposit-Underline {
+  text-decoration: underline;
 }
