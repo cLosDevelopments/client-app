@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
 export default function FooterForm() {
   return (
     <div>
-        <a href="https://github.com/cLosDevelopments">-GitHub-</a>
-        <h1 className='footer-copyright'>@Copyright 2022 ClosDevelopments</h1>
+      <a href="https://github.com/cLosDevelopments">-GitHub-</a>
+      <h1 className="footer-copyright">@Copyright 2022 ClosDevelopments</h1>
     </div>
-  )
+  );
 }

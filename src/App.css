@@ -40,7 +40,8 @@ body,
   text-align: -webkit-center;
 }
 
-.form-control, #exampleTime {
+.form-control,
+#exampleTime {
   width: 50%;
   text-align: center;
   box-shadow: 6px 6px rgb(212, 196, 179);
@@ -78,7 +79,8 @@ textarea.form-control {
 .Task-List {
   margin: 40px;
   background-color: lightgrey;
-  border-radius: 8px 8px 8px 8px;;
+  border-radius: 8px 8px 8px 8px;
+  ;
 }
 
 .footer-copyright {
@@ -90,4 +92,31 @@ a {
   text-decoration: none;
   color: black;
   font-size: 30px;
+}
+
+.delete-btn {
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+@media only screen and (max-width: 607px) {
+  table {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 455px) {
+  table {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 403px) {
+  table {
+    font-size: 8px;
+  }
+
+  .Task-List {
+    overflow: scroll;
+  }
 }

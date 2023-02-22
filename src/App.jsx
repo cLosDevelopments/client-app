@@ -16,7 +16,7 @@ export default function App() {
       service: "Volume Lashes",
       comments: "Possible Fill",
       id: 1677037386071,
-    }
+    },
   ]);
 
   const addTask = (
@@ -44,6 +44,12 @@ export default function App() {
     });
   };
 
+  const deleteItem = (id) => {
+    setItems((oldItems) => {
+      return oldItems.filter((item) => item.id !== id);
+    });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -52,7 +58,7 @@ export default function App() {
       </header>
       <main>
         <TaskForm addTask={addTask} />
-        <TaskList items={items} />
+        <TaskList items={items} deleteItem={deleteItem} />
       </main>
       <footer>
         <FooterForm />

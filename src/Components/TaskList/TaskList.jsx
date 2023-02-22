@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "reactstrap";
 
-export default function TaskList({ items }) {
+export default function TaskList({ items, deleteItem }) {
   const itemsJsx = items.map((item) => (
     <tr key={item.id}>
       <td>
@@ -14,7 +14,9 @@ export default function TaskList({ items }) {
         {item.service} / {item.comments}
       </td>
       <td>
-        <button>Delete</button>
+        <button className="delete-btn" onClick={() => deleteItem(item.id)}>
+          Delete
+        </button>
       </td>
     </tr>
   ));
