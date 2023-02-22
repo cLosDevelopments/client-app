@@ -4,7 +4,7 @@ Hosting [Github](https://closdevelopments.github.io/client-app/)
 
 ## WireFrame
 
-![wireframe](client-app.png)
+![wireframe](https://closdevelopments.github.io/client-app/blob/master/src/wireframe/client-app.png?raw=true)
 
 ## Dependencies
 
