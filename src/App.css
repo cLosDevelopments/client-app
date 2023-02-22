@@ -47,7 +47,7 @@ body,
   box-shadow: 6px 6px rgb(212, 196, 179);
 }
 
-.Intro, .Client-Info {
+.Intro, .Client-Info, .form-control {
   position: relative;
 } 
 
@@ -105,7 +105,7 @@ a {
 
 .book-background-img {
   position: absolute;
-  left: 50px;
+  left: 10%;
   transform: rotate(-15deg);
   color: rgb(252, 236, 219);
 }
