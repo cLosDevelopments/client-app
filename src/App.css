@@ -47,9 +47,12 @@ body,
   box-shadow: 6px 6px rgb(212, 196, 179);
 }
 
-.Intro, .Client-Info, .form-control {
+.Intro,
+.Client-Info,
+.form-control,
+.Task-List-Header {
   position: relative;
-} 
+}
 
 .Intro {
   font-size: calc(1.375rem + .5vw);
@@ -108,6 +111,21 @@ a {
   left: 10%;
   transform: rotate(-15deg);
   color: rgb(252, 236, 219);
+}
+
+.pencil-background-img {
+  position: absolute;
+  right: 10%;
+  top: 60%;
+  color: rgb(243, 228, 212);
+}
+
+.envelope-background {
+  position: absolute;
+  left: 9%;
+  top: 100%;
+  color: rgb(243, 228, 212);
+  transform: rotate(15deg);
 }
 
 @media only screen and (max-width: 607px) {
