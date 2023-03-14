@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Label, Input, Col, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 export default function TaskForm({ addTask }) {
   const [clientname, setName] = useState("");
@@ -38,7 +38,8 @@ export default function TaskForm({ addTask }) {
     let trimmedTechnician = technician.trim();
     let trimmedDate = date.trim();
     let trimmedTime = time.trim();
-    if (trimmedClientname.length > 0 && trimmedContact.length > 0) {
+    if (trimmedClientname.length > 0 && trimmedContact.length > 0 && trimmedService.length > 0 && trimmedTechnician.length > 0
+      && trimmedDate.length > 0 && trimmedTime.length > 0) {
       addTask(date, time, clientname, contact, technician, service, comments);
       setName("");
       setContact("");
@@ -55,7 +56,7 @@ export default function TaskForm({ addTask }) {
       <section className="Input-Section">
         <Form
           action="#"
-          method="GET"
+          method="Post"
           className="Input-Section2"
           onSubmit={handleSubmit}
         >
