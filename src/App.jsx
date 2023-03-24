@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import TaskForm from "./Components/TaskFrom/TaskForm";
@@ -7,18 +8,20 @@ import FooterForm from "./Components/FooterForm/FooterForm";
 import SearchForm from "./Components/SearchFrom/SearchForm";
 
 export default function App() {
-  const [clientitems, setClientItems] = useState([
-    {
-      date: "2024-02-22",
-      time: "13:00 ",
-      name: "Ashley thomas",
-      contact: "(800)234-3231",
-      technician: "Rebecca jones",
-      service: "Volume Lashes",
-      comments: "Possible Fill",
-      id: 1677037386071,
-    },
-  ]);
+  const [clientitems, setClientItems] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://client-scheduler.azurewebsites.net/api/schedules')
+      .then((response) => {
+        console.log(response);
+        if (Array.isArray(response.data)) {
+          setClientItems(response.data);
+        } else {
+          setClientItems([]);
+        }
+      })
+  }, []);
 
   function addClientItem(
     date,
@@ -61,7 +64,7 @@ export default function App() {
       </header>
       <main>
         <TaskForm addClientItem={addClientItem} />
-        <SearchForm addTask={addClientItem} />
+        <SearchForm addClientItem={addClientItem} />
         <TaskList
           clientItems={clientitems}
           deleteClientItem={deleteClientItem}

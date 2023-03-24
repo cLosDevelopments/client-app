@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import '../TaskFrom/formstyles.css';
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import { postData } from "../../api";
 
 export default function TaskForm(props) {
   const [name, setName] = useState("");
@@ -51,8 +50,16 @@ export default function TaskForm(props) {
       setDate("");
       setTime("");
     }
-    postData();
+    fetch('https://client-scheduler.azurewebsites.net/api/schedules/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: setName, contact: contact.value, service: service.value, technician: technician.value,
+        comments: comments.value, date: date.value, time: time.value})
+    })
+    .then(res => res.json())
+    .then(console.log);
   }
+
 
   return (
     <div>
@@ -122,6 +129,7 @@ export default function TaskForm(props) {
               maxLength="30"
               value={comments}
               onChange={handleCommentsChange}
+              required
             />
           </FormGroup>
           <h1 className="Client-Info">Appointment Time</h1>

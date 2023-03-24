@@ -11,7 +11,7 @@ export default function ListItems(props) {
             <td>{props.item.name}</td>
             <td>{props.item.contact}</td>
             <td>{props.item.technician}</td>
-            <td>{props.item.service} {props.item.comments}</td>
+            <td>{props.item.service} / {props.item.comments}</td>
             <td><button className="delete-btn" onClick={handleDelete}>Delete</button></td>
         </tr>
     );
