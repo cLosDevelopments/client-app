@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import '../TaskFrom/formstyles.css';
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { postData } from "../../api";
 
-export default function TaskForm({ addTask }) {
-  const [clientname, setName] = useState("");
+export default function TaskForm(props) {
+  const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [service, setService] = useState("");
   const [technician, setTechnician] = useState("");
   const [comments, setComments] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const handleClientnameChange = (event) => {
-    setName(event.target.value);
+  const handleNameChange = (event) => {
+    setName(event.target.value.toLowerCase());
   };
   const handleContactChange = (event) => {
     setContact(event.target.value);
@@ -30,17 +32,17 @@ export default function TaskForm({ addTask }) {
   const handleTimeChange = (event) => {
     setTime(event.target.value);
   };
-  const handleSubmit = (event) => {
+  function handleSubmit(event){
     event.preventDefault();
-    let trimmedClientname = clientname.trim();
+    let trimmedName = name.trim();
     let trimmedContact = contact.trim();
     let trimmedService = service.trim();
     let trimmedTechnician = technician.trim();
     let trimmedDate = date.trim();
     let trimmedTime = time.trim();
-    if (trimmedClientname.length > 0 && trimmedContact.length > 0 && trimmedService.length > 0 && trimmedTechnician.length > 0
+    if (trimmedName.length > 0 && trimmedContact.length > 0 && trimmedService.length > 0 && trimmedTechnician.length > 0
       && trimmedDate.length > 0 && trimmedTime.length > 0) {
-      addTask(date, time, clientname, contact, technician, service, comments);
+      props.addClientItem(date, time, name, contact, technician, service, comments);
       setName("");
       setContact("");
       setService("");
@@ -49,14 +51,15 @@ export default function TaskForm({ addTask }) {
       setDate("");
       setTime("");
     }
-  };
+    postData();
+  }
 
   return (
     <div>
       <section className="Input-Section">
         <Form
           action="#"
-          method="Post"
+          method="POST"
           className="Input-Section2"
           onSubmit={handleSubmit}
         >
@@ -68,8 +71,8 @@ export default function TaskForm({ addTask }) {
               name="Client-Name"
               placeholder="Client Name"
               type="text"
-              value={clientname}
-              onChange={handleClientnameChange}
+              value={name}
+              onChange={handleNameChange}
               required
             />
           </FormGroup>
@@ -116,6 +119,7 @@ export default function TaskForm({ addTask }) {
               name="Comments"
               placeholder="Comments"
               type="textarea"
+              maxLength="30"
               value={comments}
               onChange={handleCommentsChange}
             />

@@ -1,25 +1,20 @@
 import React from "react";
+import "../TaskList/liststyles.css";
 import { Table } from "reactstrap";
+import ListItems from "./ListItems/ListItems";
+import "./ListItems/ListItems";
 
-export default function TaskList({ items, deleteItem }) {
-  const itemsJsx = items.map((item) => (
-    <tr key={item.id}>
-      <td>
-        {item.date} / {item.time}
-      </td>
-      <td>{item.clientname}</td>
-      <td>{item.contact}</td>
-      <td>{item.technician}</td>
-      <td>
-        {item.service} / {item.comments}
-      </td>
-      <td>
-        <button className="delete-btn" onClick={() => deleteItem(item.id)}>
-          Delete
-        </button>
-      </td>
-    </tr>
-  ));
+export default function TaskList(props) {
+  let tableRowsJsx = [];
+  for (let item of props.clientItems) {
+    tableRowsJsx.push(
+      <ListItems
+        key={item.id}
+        item={item}
+        deleteClientItem={props.deleteClientItem}
+      />
+    );
+  }
   return (
     <div>
       <section className="Task-List">
@@ -37,7 +32,7 @@ export default function TaskList({ items, deleteItem }) {
                 <th>Service / Notes</th>
               </tr>
             </thead>
-            <tbody>{itemsJsx}</tbody>
+            <tbody>{tableRowsJsx}</tbody>
           </Table>
         </section>
       </section>

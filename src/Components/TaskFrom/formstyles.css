@@ -1,0 +1,25 @@
+.Input-Section {
+  margin-top: 1%;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  text-align: -webkit-center;
+}
+
+.Client-Info {
+  font-size: calc(1.1rem + 2vw);
+}
+
+.btn {
+  padding: 6px 15px;
+  margin-top: 20px;
+  font-size: 29px;
+  background-color: rgb(209, 193, 176);
+  color: white;
+  border: none;
+  box-shadow: 6px 4px #d1cfcd;
+}
+
+textarea.form-control {
+  min-height: calc(6.5em + .75rem + 2px);
+}

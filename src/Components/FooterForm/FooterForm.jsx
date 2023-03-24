@@ -1,4 +1,5 @@
 import React from "react";
+import "../FooterForm/footerstyles.css";
 
 export default function FooterForm() {
   return (

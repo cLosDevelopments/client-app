@@ -4,13 +4,14 @@ import Header from "./Components/Header/Header";
 import TaskForm from "./Components/TaskFrom/TaskForm";
 import TaskList from "./Components/TaskList/TaskList";
 import FooterForm from "./Components/FooterForm/FooterForm";
+import SearchForm from "./Components/SearchFrom/SearchForm";
 
 export default function App() {
-  const [items, setItems] = useState([
+  const [clientitems, setClientItems] = useState([
     {
       date: "2024-02-22",
-      time: "12:00 PM",
-      clientname: "Ashley thomas",
+      time: "13:00 ",
+      name: "Ashley thomas",
       contact: "(800)234-3231",
       technician: "Rebecca jones",
       service: "Volume Lashes",
@@ -19,36 +20,38 @@ export default function App() {
     },
   ]);
 
-  const addTask = (
+  function addClientItem(
     date,
     time,
-    clientname,
+    name,
     contact,
     technician,
     service,
     comments
-  ) => {
-    setItems((oldItems) => {
-      const newItems = [...oldItems];
-      newItems.push({
+  ) {
+    setClientItems((oldClientItems) => {
+      const newClientItems = structuredClone(oldClientItems);
+      newClientItems.push({
         date,
         time,
-        clientname,
+        name,
         contact,
         technician,
         service,
         comments,
         id: new Date().getTime(),
       });
-      return newItems;
+      return newClientItems;
     });
-  };
+  }
 
-  const deleteItem = (id) => {
-    setItems((oldItems) => {
-      return oldItems.filter((item) => item.id !== id);
+  function deleteClientItem(id) {
+    setClientItems((oldClientItems) => {
+      let newClientItems = structuredClone(oldClientItems);
+      newClientItems = newClientItems.filter(item => item.id !== id);
+      return newClientItems;
     });
-  };
+  }
 
   return (
     <div className="App">
@@ -57,8 +60,12 @@ export default function App() {
         <Header />
       </header>
       <main>
-        <TaskForm addTask={addTask} />
-        <TaskList items={items} deleteItem={deleteItem} />
+        <TaskForm addClientItem={addClientItem} />
+        <SearchForm addTask={addClientItem} />
+        <TaskList
+          clientItems={clientitems}
+          deleteClientItem={deleteClientItem}
+        />
       </main>
       <footer>
         <FooterForm />
