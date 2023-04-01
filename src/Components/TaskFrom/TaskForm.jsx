@@ -50,14 +50,6 @@ export default function TaskForm(props) {
       setDate("");
       setTime("");
     }
-    fetch('https://client-scheduler.azurewebsites.net/api/schedules/new', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: setName, contact: contact.value, service: service.value, technician: technician.value,
-        comments: comments.value, date: date.value, time: time.value})
-    })
-    .then(res => res.json())
-    .then(console.log);
   }
 
 

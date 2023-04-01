@@ -5,23 +5,25 @@ import Header from "./Components/Header/Header";
 import TaskForm from "./Components/TaskFrom/TaskForm";
 import TaskList from "./Components/TaskList/TaskList";
 import FooterForm from "./Components/FooterForm/FooterForm";
-import SearchForm from "./Components/SearchFrom/SearchForm";
 
 export default function App() {
   const [clientitems, setClientItems] = useState([]);
-
-  useEffect(() => {
+  const ClientData = () => {
     axios
-      .get('https://client-scheduler.azurewebsites.net/api/schedules')
+      .get("https://client-scheduler.azurewebsites.net/api/schedules")
       .then((response) => {
-        console.log(response);
         if (Array.isArray(response.data)) {
           setClientItems(response.data);
         } else {
           setClientItems([]);
         }
       })
-  }, []);
+      .catch((error) => {
+        setClientItems([]);
+      });
+  };
+
+  useEffect(ClientData, []);
 
   function addClientItem(
     date,
@@ -32,28 +34,23 @@ export default function App() {
     service,
     comments
   ) {
-    setClientItems((oldClientItems) => {
-      const newClientItems = structuredClone(oldClientItems);
-      newClientItems.push({
-        date,
-        time,
+    axios
+      .post("https://client-scheduler.azurewebsites.net/api/schedules/new", {
         name,
         contact,
-        technician,
         service,
+        technician,
         comments,
-        id: new Date().getTime(),
-      });
-      return newClientItems;
-    });
+        date,
+        time,
+      })
+      .then(ClientData);
   }
 
   function deleteClientItem(id) {
-    setClientItems((oldClientItems) => {
-      let newClientItems = structuredClone(oldClientItems);
-      newClientItems = newClientItems.filter(item => item.id !== id);
-      return newClientItems;
-    });
+    axios
+      .delete("https://client-scheduler.azurewebsites.net/api/schedules/" + id)
+      .then(ClientData);
   }
 
   return (
@@ -64,7 +61,6 @@ export default function App() {
       </header>
       <main>
         <TaskForm addClientItem={addClientItem} />
-        <SearchForm addClientItem={addClientItem} />
         <TaskList
           clientItems={clientitems}
           deleteClientItem={deleteClientItem}
