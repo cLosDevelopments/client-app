@@ -12,6 +12,7 @@ export default function TaskList(props) {
         key={item.id}
         item={item}
         deleteClientItem={props.deleteClientItem}
+        updateClientItem={props.updateClientItem}
       />
     );
   }

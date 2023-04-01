@@ -53,6 +53,10 @@ export default function App() {
       .then(ClientData);
   }
 
+  function updateClientItem() {
+    ClientData();
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -64,6 +68,7 @@ export default function App() {
         <TaskList
           clientItems={clientitems}
           deleteClientItem={deleteClientItem}
+          updateClientItem={updateClientItem}
         />
       </main>
       <footer>

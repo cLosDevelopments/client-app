@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../TaskFrom/formstyles.css';
+import "../TaskFrom/formstyles.css";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 export default function TaskForm(props) {
@@ -31,7 +31,7 @@ export default function TaskForm(props) {
   const handleTimeChange = (event) => {
     setTime(event.target.value);
   };
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
     let trimmedName = name.trim();
     let trimmedContact = contact.trim();
@@ -39,9 +39,23 @@ export default function TaskForm(props) {
     let trimmedTechnician = technician.trim();
     let trimmedDate = date.trim();
     let trimmedTime = time.trim();
-    if (trimmedName.length > 0 && trimmedContact.length > 0 && trimmedService.length > 0 && trimmedTechnician.length > 0
-      && trimmedDate.length > 0 && trimmedTime.length > 0) {
-      props.addClientItem(date, time, name, contact, technician, service, comments);
+    if (
+      trimmedName.length > 0 &&
+      trimmedContact.length > 0 &&
+      trimmedService.length > 0 &&
+      trimmedTechnician.length > 0 &&
+      trimmedDate.length > 0 &&
+      trimmedTime.length > 0
+    ) {
+      props.addClientItem(
+        date,
+        time,
+        name,
+        contact,
+        technician,
+        service,
+        comments
+      );
       setName("");
       setContact("");
       setService("");
@@ -51,7 +65,6 @@ export default function TaskForm(props) {
       setTime("");
     }
   }
-
 
   return (
     <div>

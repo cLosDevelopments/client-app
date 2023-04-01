@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ClientData from "../../../App";
 
 export default function ListItems(props) {
   const [isEditing, setIsEditing] = useState(false);
@@ -35,10 +34,10 @@ export default function ListItems(props) {
         technician: itemtechnician,
         comments: itemcomments,
         date: itemdate,
-        time: itemtime
+        time: itemtime,
       }
-    )
-    .then(ClientData);
+    );
+    props.updateClientItem(props.item.id);
   }
 
   const handleNameChange = (event) => {
@@ -68,8 +67,27 @@ export default function ListItems(props) {
   }
 
   function toggleSaveMode() {
-    setIsEditing(false);
-    handleUpdate();
+    let trimmedItemName = itemname.trim();
+    let trimmedItemContact = itemcontact.trim();
+    let trimmedItemService = itemservice.trim();
+    let trimmedItemTechnician = itemtechnician.trim();
+    let trimmedItemDate = itemdate.trim();
+    let trimmedItemTime = itemtime.trim();
+    let trimmedItemComments = itemcomments.trim();
+    if (
+      trimmedItemName.length > 0 &&
+      trimmedItemContact.length > 0 &&
+      trimmedItemService.length > 0 &&
+      trimmedItemTechnician.length > 0 &&
+      trimmedItemDate.length > 0 &&
+      trimmedItemTime.length > 0 &&
+      trimmedItemComments.length > 0
+    ) {
+      setIsEditing(false);
+      handleUpdate();
+    } else {
+      toggleEditMode();
+    }
   }
 
   if (isEditing) {
